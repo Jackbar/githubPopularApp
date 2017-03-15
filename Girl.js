@@ -61,7 +61,7 @@ export default class Girl extends Component {
 const styles = StyleSheet.create({
 	container:{
 		flex:1,
-		backgroundColor:'pink',
+		backgroundColor:'white',
 	},
 	text:{
 		fontSize:20

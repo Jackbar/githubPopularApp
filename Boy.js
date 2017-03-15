@@ -25,7 +25,7 @@ export default class Boy extends Component {
 						backgroundColor:'#0096ff'
 					}}
 					statusBar={{
-						backgroundColor:'#0096ff',
+						backgroundColor:'#0096ff',//安卓下才会生效
 						barStyle:'light-content'
 					}}
 				/>
