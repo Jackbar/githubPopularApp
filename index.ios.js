@@ -15,6 +15,7 @@ import {
 } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
 import Boy from './Boy'
+import ListViewTest from './ListViewTest'
 export default class githubPopularApp extends Component {
   constructor(props){
     super(props);
@@ -65,15 +66,16 @@ export default class githubPopularApp extends Component {
             {/*<View style={styles.page2}></View>*/}
           {/*</TabNavigator.Item>*/}
         {/*</TabNavigator>*/}
-        <Navigator
-          initialRoute={{
-            component:Boy
-          }}
-          renderScene={(route,navigator)=>{
-            let Component = route.component;
-            return <Component navigator={navigator} {...route.params}></Component>
-          }}
-        ></Navigator>
+        {/*<Navigator*/}
+          {/*initialRoute={{*/}
+            {/*component:Boy*/}
+          {/*}}*/}
+          {/*renderScene={(route,navigator)=>{*/}
+            {/*let Component = route.component;*/}
+            {/*return <Component navigator={navigator} {...route.params}></Component>*/}
+          {/*}}*/}
+        {/*></Navigator>*/}
+        <ListViewTest></ListViewTest>
       </View>
     );
   }
