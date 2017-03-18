@@ -12,7 +12,7 @@ import {
 	RefreshControl
 } from 'react-native'
 import Toast,{DURATION} from 'react-native-easy-toast'
-import NavigationBar from './NavigationBar'
+import NavigationBar from './js/common/NavigationBar'
 import HttpUtils from './HttpUtils'
 var data={garageList:[{garageName:'jj',contactMobile:'133'}]}
 export default class ListViewTest extends Component {
