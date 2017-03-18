@@ -54,7 +54,7 @@ export default class PopularPage extends Component {
 			<TextInput style={{height:20,borderWidth:1}}
 				onChangeText={text=>this.text=text}
 			></TextInput>
-			<Text style={{height:800,fontSize:22}}>{this.state.result}</Text>
+			<Text style={{height:800,fontSize:22,backgroundColor:'pink'}}>{this.state.result}</Text>
 		</View>
 	}
 }
