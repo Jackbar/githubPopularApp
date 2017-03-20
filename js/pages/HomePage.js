@@ -20,7 +20,7 @@ export default class HomePage extends Component {
 	render() {
 		return (
 			<View style={styles.container}>
-				<TabNavigator tabBarStyle={{opacity:0.9}}>
+				<TabNavigator tabBarStyle={{opacity:0.97}}>
 					<TabNavigator.Item
 						selected={this.state.selectedTab === 'tb_popular'}
 						selectedTitleStyle={{color: '#2196f3'}}
