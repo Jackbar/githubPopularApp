@@ -21,15 +21,15 @@ export default class HomePage extends Component {
 	render() {
 		return (
 			<View style={styles.container}>
-				<TabNavigator>
+				<TabNavigator tabBarStyle={{opacity:0.9}}>
 					<TabNavigator.Item
 						selected={this.state.selectedTab === 'tb_popular'}
-						selectedTitleStyle={{color: 'red'}}
+						selectedTitleStyle={{color: '#2196f3'}}
 						title="最热"
 						renderIcon={() => <Image style={styles.image} source={require('../../res/images/ic_polular.png')}/>}
-						renderSelectedIcon={() => <Image style={[styles.image, {tintColor: 'red'}]}
+						renderSelectedIcon={() => <Image style={[styles.image, {tintColor: '#2196f3'}]}
 						                                 source={require('../../res/images/ic_polular.png')}/>}
-						badgeText="1"
+						// badgeText="1"
 						onPress={() => this.setState({selectedTab: 'tb_popular'})}>
 						<PopularPage></PopularPage>
 					</TabNavigator.Item>
