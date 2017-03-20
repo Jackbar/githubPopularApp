@@ -17,7 +17,6 @@ export default class HomePage extends Component {
 			selectedTab: 'tb_popular'
 		}
 	}
-
 	render() {
 		return (
 			<View style={styles.container}>
