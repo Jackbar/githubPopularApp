@@ -8,7 +8,8 @@ import {
 	StyleSheet,
 	ScrollView,
 	TouchableOpacity,
-	Image
+	Image,
+	Alert
 } from 'react-native'
 import LanguageDao,{FLAG_LANGUAGE} from '../../expand/dao/LanguageDao'
 import ScrollableTabView ,{ScrollableTabBar} from 'react-native-scrollable-tab-view'
@@ -47,6 +48,20 @@ export default class CustomKeyPage extends Component {
 		this.languageDao.save(this.state.dataArray)
 		this.props.navigator.pop()
 
+	}
+	onBack(){
+		if(this.changeValue.length==0){
+			this.props.navigator.pop()
+			return
+		}
+		Alert.alert(
+			'提示',
+			'要保存修改吗?',
+			[
+				{text:'不保存',onPress:()=>{this.props.navigator.pop()},styles:'cancel'},
+				{text:'保存',onPress:()=>{this.onSave()}}
+			]
+		)
 	}
 	renderView(){
 		if(!this.state.dataArray || this.state.dataArray.length===0) return null
@@ -101,7 +116,7 @@ export default class CustomKeyPage extends Component {
 			<NavigationBar
 				title={'自定义标签'}
 			  leftButton={ViewUtils.getLeftButton(()=>{
-			  	this.onSave()
+			  	this.onBack()
 			  })}
 			  rightButton={RightButton}
 			></NavigationBar>

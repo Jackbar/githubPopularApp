@@ -13,36 +13,55 @@ import ScrollableTabView ,{ScrollableTabBar} from 'react-native-scrollable-tab-v
 import NavigationBar from '../common/NavigationBar'
 import DataRepository from '../expand/dao/DataRepository'
 import RepositoryCell from '../common/RepositoryCell'
+import LanguageDao ,{FLAG_LANGUAGE}from '../expand/dao/LanguageDao'
 const URL='https://api.github.com/search/repositories?q='
 const QUERY_STR = '&sort=stars'
 export default class PopularPage extends Component {
 	constructor(props){
 		super(props)
+		this.languageDao = new LanguageDao(FLAG_LANGUAGE.flag_key)
 		this.state={
-			result:''
+			language:[]
 		}
 	}
 
+	componentDidMount(){
+		this.loadLanguage()
+	}
+
+	loadLanguage(){
+		this.languageDao.fetch()
+			.then(res=>{
+				this.setState({
+					language:res
+				})
+			})
+			.catch(error=>{
+				console.log(error)
+			})
+	}
 
 	render() {
+		let scrollContent =
+			<ScrollableTabView
+				renderTabBar={()=><ScrollableTabBar></ScrollableTabBar>}
+				tabBarBackgroundColor="#2196f3"
+				tabBarInactiveTextColor="mintcream"
+				tabBarActiveTextColor="white"
+				tabBarUnderlineStyle={{backgroundColor:'#e7e7e7',height:2}}
+			>
+				{this.state.language.map((result,i,arr)=>{
+					let lan = arr[i]
+					return lan.checked?<PopularTab key={i} tabLabel={lan.name}></PopularTab>:null
+				})}
+			</ScrollableTabView>
+
 		return <View style={styles.container}>
 			<NavigationBar
 				title={'最热'}
 			  // statusBar={{backgroundColor:'#2196f3'}}
 			></NavigationBar>
-			<ScrollableTabView
-				renderTabBar={()=><ScrollableTabBar></ScrollableTabBar>}
-			  tabBarBackgroundColor="#2196f3"
-			  tabBarInactiveTextColor="mintcream"
-				tabBarActiveTextColor="white"
-				tabBarUnderlineStyle={{backgroundColor:'#e7e7e7',height:2}}
-			>
-				<PopularTab tabLabel="JavaScript"></PopularTab>
-				<PopularTab tabLabel="iOS"></PopularTab>
-				<PopularTab tabLabel="ANDROID"></PopularTab>
-				<PopularTab tabLabel="JAVA"></PopularTab>
-
-			</ScrollableTabView>
+			{this.state.language.length>0?scrollContent:null}
 		</View>
 	}
 }
