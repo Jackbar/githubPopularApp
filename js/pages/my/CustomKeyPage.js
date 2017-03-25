@@ -12,7 +12,6 @@ import {
 	Alert
 } from 'react-native'
 import LanguageDao,{FLAG_LANGUAGE} from '../../expand/dao/LanguageDao'
-import ScrollableTabView ,{ScrollableTabBar} from 'react-native-scrollable-tab-view'
 import NavigationBar from '../../common/NavigationBar'
 import CheckBox from 'react-native-check-box'
 import ViewUtils from '../../util/ViewUtils'
